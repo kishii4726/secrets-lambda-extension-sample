@@ -1,0 +1,21 @@
+service: secrets-lambda-extension
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+  region: ap-northeast-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - ssm:GetParameter
+        - kms:Decrypt
+      Resource: "*"
+
+functions:
+  sample:
+    handler: lambda_function.lambda_handler
+    layers:
+      - arn:aws:lambda:ap-northeast-1:133490724326:layer:AWS-Parameters-and-Secrets-Lambda-Extension:2
+
