@@ -1,0 +1,1 @@
+# secrets-lambda-extension-sample
